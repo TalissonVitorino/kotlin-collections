@@ -50,7 +50,14 @@ fun main() {
 
         "22) (Composição) SP → nomes em ordem alfabética" to { p -> exercicio22(p) },
         "23) (Composição) Por cidade: quantas FEMININO estão empregadas" to { p -> exercicio23(p) },
-        "24) (Composição) Mapa: gênero → lista de nomes ordenados por idade crescente" to { p -> exercicio24(p) }
+        "24) (Composição) Mapa: gênero → lista de nomes ordenados por idade crescente" to { p -> exercicio24(p) },
+
+        "25) Encontrar a primeira pessoa de Rio de Janeiro" to { p -> exercicio25(p) },
+        "26) Encontrar a última pessoa de São Paulo" to { p -> exercicio26(p) },
+        "27) Encontrar a primeira pessoa desempregada" to { p -> exercicio27(p) },
+        "28) Encontrar a última pessoa do gênero INDEFINIDO" to { p -> exercicio28(p) },
+        "29) Encontrar a primeira pessoa com mais de 40 anos" to { p -> exercicio29(p) },
+        "30) Encontrar a última pessoa com idade menor que 25" to { p -> exercicio30(p) },
     )
 
     exercicios.forEachIndexed { idx, (titulo, funcao) ->
@@ -231,5 +238,35 @@ fun exercicio24(pessoas: List<Pessoa>): Map<Genero, List<String>> {
     // COMPOSIÇÃO:
     // Mapa: genero -> lista de nomes ordenados por idade crescente
     // TODO: retornar Map<Genero, List<String>>
+    return TODO()
+}
+
+fun exercicio25(pessoas: List<Pessoa>): Pessoa? {
+    // TODO: retornar a primeira Pessoa cuja cidade seja "Rio de Janeiro"
+    return TODO()
+}
+
+fun exercicio26(pessoas: List<Pessoa>): Pessoa? {
+    // TODO: retornar a última Pessoa cuja cidade seja "São Paulo"
+    return TODO()
+}
+
+fun exercicio27(pessoas: List<Pessoa>): Pessoa? {
+    // TODO: retornar a primeira Pessoa que esteja desempregada (empregado == false)
+    return TODO()
+}
+
+fun exercicio28(pessoas: List<Pessoa>): Pessoa? {
+    // TODO: retornar a última Pessoa do gênero INDEFINIDO
+    return TODO()
+}
+
+fun exercicio29(pessoas: List<Pessoa>): Pessoa? {
+    // TODO: retornar a primeira Pessoa com idade > 40
+    return TODO()
+}
+
+fun exercicio30(pessoas: List<Pessoa>): Pessoa? {
+    // TODO: retornar a última Pessoa com idade < 25
     return TODO()
 }
