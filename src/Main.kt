@@ -263,37 +263,37 @@ fun exercicio24(pessoas: List<Pessoa>): Map<Genero, List<String>> {
 }
 
 fun exercicio25(pessoas: List<Pessoa>): Pessoa? {
-    //  retornar a primeira Pessoa cuja cidade seja "Rio de Janeiro"
+    //retornar a primeira Pessoa cuja cidade seja "Rio de Janeiro"
     val primeiraPessoaRJ = pessoas.firstOrNull { it.cidade == "Rio de Janeiro" }
     return primeiraPessoaRJ
 }
 
 fun exercicio26(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar a última Pessoa cuja cidade seja "São Paulo"
+    //retornar a última Pessoa cuja cidade seja "São Paulo"
     val ultimaPessoaSp = pessoas.lastOrNull{ it.cidade == "São Paulo" }
     return ultimaPessoaSp
 }
 
 fun exercicio27(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar a primeira Pessoa que esteja desempregada (empregado == false)
+    //retornar a primeira Pessoa que esteja desempregada (empregado == false)
     val primeiraPeDesempregada = pessoas.firstOrNull { !it.empregado }
     return primeiraPeDesempregada
 }
 
 fun exercicio28(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar a última Pessoa do gênero INDEFINIDO
+    //retornar a última Pessoa do gênero INDEFINIDO
     val ultimaPessoaIndefinida = pessoas.lastOrNull { it.genero == Genero.INDEFINIDO }
     return ultimaPessoaIndefinida
 }
 
 fun exercicio29(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar a primeira Pessoa com idade > 40
+    //retornar a primeira Pessoa com idade > 40
     val pessoaMaior40 = pessoas.firstOrNull { it.idade > 40 }
     return pessoaMaior40
 }
 
 fun exercicio30(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar a última Pessoa com idade < 25
+    //retornar a última Pessoa com idade < 25
     val pessoaMenor25 = pessoas.lastOrNull { it.idade < 25 }
     return pessoaMenor25
 }
