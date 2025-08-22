@@ -90,50 +90,50 @@ private fun formatarResultado(resultado: Any?): String = when (resultado) {
 // Exercícios: implemente as funções conforme contratos/requisitos descritos.
 
 fun exercicio1(pessoas: List<Pessoa>): List<Pessoa> {
-    // percorrer a lista imprimindo o nome de cada pessoa, e retornar a própria lista.
+    //percorrer a lista imprimindo o nome de cada pessoa, e retornar a própria lista.
     pessoas.forEach { println(it.nome) }
     return pessoas
 }
 
 fun exercicio2(pessoas: List<Pessoa>): List<String> {
-    //  retornar List<String> no formato "Nome - Genero"
+    //retornar List<String> no formato "Nome - Genero"
     val lista = pessoas.map { "${it.nome} - ${it.genero}" }
     return lista
 
 }
 
 fun exercicio3(pessoas: List<Pessoa>): Int {
-    // retornar Int com a quantidade de pessoas da lista
+    //retornar Int com a quantidade de pessoas da lista
     val quantidadePessoas = pessoas.size
     return quantidadePessoas
 }
 
 fun exercicio4(pessoas: List<Pessoa>): Pessoa? {
-    // retornar a primeira Pessoa da lista (ou null se a lista estiver vazia)
+    //retornar a primeira Pessoa da lista (ou null se a lista estiver vazia)
     val primeiraPessoa = pessoas.firstOrNull()
     return primeiraPessoa
 }
 
 fun exercicio5(pessoas: List<Pessoa>): Pessoa? {
-    //  retornar a última Pessoa da lista (ou null se a lista estiver vazia),
+    //retornar a última Pessoa da lista (ou null se a lista estiver vazia),
     val ultimaPessoa = pessoas.lastOrNull()
     return ultimaPessoa
 }
 
 fun exercicio6(pessoas: List<Pessoa>): Pessoa? {
-    //  retornar a segunda Pessoa da lista (ou null se não houver)
+    //retornar a segunda Pessoa da lista (ou null se não houver)
     val segundaPessoa = pessoas.getOrNull(1)
     return segundaPessoa
 }
 
 fun exercicio7(pessoas: List<Pessoa>): Boolean {
-    //  retornar Boolean indicando se a lista está vazia
+    //retornar Boolean indicando se a lista está vazia
     val listaEstaVazia = pessoas.isEmpty()
     return listaEstaVazia
 }
 
 fun exercicio8(pessoas: List<Pessoa>): List<Pessoa> {
-    //  retornar List<Pessoa> apenas do gênero FEMININO
+    //retornar List<Pessoa> apenas do gênero FEMININO
     val listaGeneroFeminino = pessoas.filter { it.genero == Genero.FEMININO }
     return listaGeneroFeminino
 }
@@ -146,51 +146,51 @@ fun exercicio9(pessoas: List<Pessoa>): List<Pessoa> {
 }
 
 fun exercicio10(pessoas: List<Pessoa>): List<Pessoa> {
-    //  retornar List<Pessoa> do gênero FEMININO que NÃO estão empregadas
+    //retornar List<Pessoa> do gênero FEMININO que NÃO estão empregadas
     val listaMulheresDesempregada = pessoas.filter { it.genero == Genero.FEMININO && !it.empregado }
     return listaMulheresDesempregada
 }
 
 fun exercicio11(pessoas: List<Pessoa>): List<Pessoa> {
-    // retornar List<Pessoa> do gênero MASCULINO com idade < 30
+    //retornar List<Pessoa> do gênero MASCULINO com idade < 30
     val menoresDe30 = pessoas.filter { it.genero == Genero.MASCULINO && it.idade < 30 }
     return menoresDe30
 }
 
 fun exercicio12(pessoas: List<Pessoa>): Boolean {
-    //  retornar Boolean: existe algum MASCULINO desempregado?
+    //retornar Boolean: existe algum MASCULINO desempregado?
     val HomenDesempregado = pessoas.any { it.genero == Genero.MASCULINO && !it.empregado }
     return HomenDesempregado
 }
 
 fun exercicio13(pessoas: List<Pessoa>): Boolean {
-    //  retornar Boolean: todas do FEMININO têm 18+?
+    //retornar Boolean: todas do FEMININO têm 18+?
     return pessoas
         .filter { it.genero == Genero.FEMININO }
         .all { it.idade >= 18 }
 }
 
 fun exercicio14(pessoas: List<Pessoa>): List<String> {
-    //  retornar List<String> com nomes das pessoas do gênero FEMININO
+    //retornar List<String> com nomes das pessoas do gênero FEMININO
     val listaDeNomes = pessoas.filter { it.genero == Genero.FEMININO }.map { it.nome }
     return listaDeNomes
 }
 
 fun exercicio15(pessoas: List<Pessoa>): List<String> {
-    // TODO: retornar List<String> com "Nome (GÊNERO) tem X anos e mora em Cidade"
+    //retornar List<String> com "Nome (GÊNERO) tem X anos e mora em Cidade"
     val nomeGerenoCidade = pessoas
         .map { "${it.nome} (${it.genero}) tem ${it.idade} anos e mora em ${it.cidade}" }
     return nomeGerenoCidade
 }
 
 fun exercicio16(pessoas: List<Pessoa>): List<Pessoa> {
-    //  retornar List<Pessoa> ordenada por genero (enum) e depois por nome
+    //retornar List<Pessoa> ordenada por genero (enum) e depois por nome
     return pessoas.
     sortedWith(compareBy({ it.genero }, { it.nome }))
 }
 
 fun exercicio17(pessoas: List<Pessoa>): List<Pessoa> {
-    // TODO: retornar List<Pessoa> ordenada por cidade e, dentro, por idade decrescente
+    //retornar List<Pessoa> ordenada por cidade e, dentro, por idade decrescente
     val ordenarCidadeeIdade = pessoas
         .sortedWith(compareBy<Pessoa>({ it.cidade })
             .thenByDescending { it.idade })
@@ -198,24 +198,33 @@ fun exercicio17(pessoas: List<Pessoa>): List<Pessoa> {
 }
 
 fun exercicio18(pessoas: List<Pessoa>): Int {
-    // TODO: retornar Int com a soma das idades do gênero MASCULINO
+    // retornar Int com a soma das idades do gênero MASCULINO
     val somaIdadeMasculino = pessoas.filter { it.genero == Genero.MASCULINO }.sumOf { it.idade }
     return somaIdadeMasculino
 }
 
 fun exercicio19(pessoas: List<Pessoa>): Map<Genero, Double> {
-    // TODO: retornar Map<Genero, Double> com idade média por gênero
-    return TODO()
+    // retornar Map<Genero, Double> com idade média por gênero
+    val retornaMediaGenero = pessoas
+        .map({ it.genero to it.idade.toDouble() })
+        .groupBy({ it.first }, { it.second })
+    return retornaMediaGenero.mapValues { it.value.average() }
 }
 
 fun exercicio20(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar Pessoa mais velha do gênero FEMININO (ou null se não houver)
-    return TODO()
+    // retornar Pessoa mais velha do gênero FEMININO (ou null se não houver)
+    val maisVelha = pessoas
+        .filter { it.genero == Genero.FEMININO }
+        .maxByOrNull { it.idade }
+    return maisVelha
 }
 
 fun exercicio21(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar Pessoa mais nova do gênero INDEFINIDO (ou null se não houver)
-    return TODO()
+    // retornar Pessoa mais nova do gênero INDEFINIDO (ou null se não houver)
+    val pessoaMaisNova = pessoas
+    .filter { it.genero == Genero.INDEFINIDO }
+        .minByOrNull { it.idade }
+    return pessoaMaisNova
 }
 
 fun exercicio22(pessoas: List<Pessoa>): List<String> {
@@ -223,14 +232,19 @@ fun exercicio22(pessoas: List<Pessoa>): List<String> {
     // 1) filtrar pessoas de "São Paulo"
     // 2) transformar em List<String> de nomes
     // 3) ordenar alfabeticamente
-    // TODO: retornar List<String>
-    return TODO()
+    // retornar List<String>
+    val ordernarNomesSP = pessoas
+        .filter {"São Paulo" == it.cidade}
+        .map { it.nome }
+        .sorted()
+    return ordernarNomesSP
 }
 
 fun exercicio23(pessoas: List<Pessoa>): Map<String, Int> {
     // COMPOSIÇÃO:
     // Para cada cidade, QUANTAS pessoas do gênero FEMININO estão empregadas
     // TODO: retornar Map<String, Int>
+
     return TODO()
 }
 
@@ -238,7 +252,11 @@ fun exercicio24(pessoas: List<Pessoa>): Map<Genero, List<String>> {
     // COMPOSIÇÃO:
     // Mapa: genero -> lista de nomes ordenados por idade crescente
     // TODO: retornar Map<Genero, List<String>>
-    return TODO()
+    val listaOrdenadoIdadesCrescente = pessoas
+    .sortedWith(compareBy<Pessoa>({ it.genero }, { it.idade }))
+    .groupBy({ it.genero }, { it.nome })
+    .mapValues { it.value.sorted() }
+    return listaOrdenadoIdadesCrescente
 }
 
 fun exercicio25(pessoas: List<Pessoa>): Pessoa? {
