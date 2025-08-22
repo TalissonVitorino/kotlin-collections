@@ -243,15 +243,18 @@ fun exercicio22(pessoas: List<Pessoa>): List<String> {
 fun exercicio23(pessoas: List<Pessoa>): Map<String, Int> {
     // COMPOSIÇÃO:
     // Para cada cidade, QUANTAS pessoas do gênero FEMININO estão empregadas
-    // TODO: retornar Map<String, Int>
-
-    return TODO()
+    //  retornar Map<String, Int>
+    val mulheresEmpregadas = pessoas
+        .filter { it.genero == Genero.FEMININO }
+        .groupBy { it.cidade}
+        .mapValues {it.value.count { p -> p.empregado }}
+    return mulheresEmpregadas
 }
 
 fun exercicio24(pessoas: List<Pessoa>): Map<Genero, List<String>> {
     // COMPOSIÇÃO:
     // Mapa: genero -> lista de nomes ordenados por idade crescente
-    // TODO: retornar Map<Genero, List<String>>
+    //  retornar Map<Genero, List<String>>
     val listaOrdenadoIdadesCrescente = pessoas
     .sortedWith(compareBy<Pessoa>({ it.genero }, { it.idade }))
     .groupBy({ it.genero }, { it.nome })
@@ -260,31 +263,37 @@ fun exercicio24(pessoas: List<Pessoa>): Map<Genero, List<String>> {
 }
 
 fun exercicio25(pessoas: List<Pessoa>): Pessoa? {
-    // TODO: retornar a primeira Pessoa cuja cidade seja "Rio de Janeiro"
-    return TODO()
+    //  retornar a primeira Pessoa cuja cidade seja "Rio de Janeiro"
+    val primeiraPessoaRJ = pessoas.firstOrNull { it.cidade == "Rio de Janeiro" }
+    return primeiraPessoaRJ
 }
 
 fun exercicio26(pessoas: List<Pessoa>): Pessoa? {
     // TODO: retornar a última Pessoa cuja cidade seja "São Paulo"
-    return TODO()
+    val ultimaPessoaSp = pessoas.lastOrNull{ it.cidade == "São Paulo" }
+    return ultimaPessoaSp
 }
 
 fun exercicio27(pessoas: List<Pessoa>): Pessoa? {
     // TODO: retornar a primeira Pessoa que esteja desempregada (empregado == false)
-    return TODO()
+    val primeiraPeDesempregada = pessoas.firstOrNull { !it.empregado }
+    return primeiraPeDesempregada
 }
 
 fun exercicio28(pessoas: List<Pessoa>): Pessoa? {
     // TODO: retornar a última Pessoa do gênero INDEFINIDO
-    return TODO()
+    val ultimaPessoaIndefinida = pessoas.lastOrNull { it.genero == Genero.INDEFINIDO }
+    return ultimaPessoaIndefinida
 }
 
 fun exercicio29(pessoas: List<Pessoa>): Pessoa? {
     // TODO: retornar a primeira Pessoa com idade > 40
-    return TODO()
+    val pessoaMaior40 = pessoas.firstOrNull { it.idade > 40 }
+    return pessoaMaior40
 }
 
 fun exercicio30(pessoas: List<Pessoa>): Pessoa? {
     // TODO: retornar a última Pessoa com idade < 25
-    return TODO()
+    val pessoaMenor25 = pessoas.lastOrNull { it.idade < 25 }
+    return pessoaMenor25
 }
